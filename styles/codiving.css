@@ -1,0 +1,135 @@
+.codiving-title {
+  display: block;
+  padding: 0 10px;
+  font-size: 28px;
+  font-weight: 600;
+  border-left: 4px solid red;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+
+.codiving-title_description {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.codiving-sub_title {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 40px 0 15px;
+  border-left: 4px solid darkred;
+  opacity: 0.8;
+}
+
+.codiving-sub_title_content {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.codiving-last_title {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px 0 20px;
+  border-left: 4px solid black;
+  opacity: 0.8;
+}
+
+.codiving-content_title1 {
+  display: block;
+  font-size: 20px;
+  margin: 20px 0 10px;
+  padding-left: 10px;
+  border-left: 3px solid indianred;
+}
+
+.codiving-content_content1 {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 11px !important;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.codiving-content_content2 {
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.codiving-mini_title {
+  display: block;
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.codiving-ul {
+  display: block;
+  margin: 15px 0;
+  list-style-type: circle;
+  font-size: 16px;
+}
+
+.codiving-ul li {
+  display: block;
+  margin: 7px;
+  font-weight: 200;
+}
+
+.codiving-my_link {
+  background: green;
+  padding: 1px 4px;
+  color: white;
+}
+
+.codiving-y_mark {
+  font-weight: 600;
+  background: yellow;
+}
+
+.codiving-r_mark {
+  font-weight: 600;
+  color: red;
+}
+
+.codiving-bold {
+  font-weight: 400;
+}
+
+.codiving-bold_line {
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.codiving-image {
+  display: block;
+  margin: 10px 0;
+}
+
+.codiving-warn_title {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px 0 20px;
+  border-left: 4px solid red;
+  opacity: 0.8;
+}
+
+.codiving-err_msg {
+  font-size: 16px;
+  margin-bottom: 5px !important;
+  display: block;
+}
+
+.codiving-gist {
+  margin-top: 20px;
+}
