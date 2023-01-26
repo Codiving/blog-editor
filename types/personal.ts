@@ -59,7 +59,7 @@ type PersonalTypeList = {
   hidden: boolean;
 };
 
-export const CODIVING_TYPE_LIST: PersonalTypeList[] = [
+export const PERSONAL_TYPE_LIST: PersonalTypeList[] = [
   { label: "제목", type: "title", hidden: false },
   { label: "소제목", type: "sub_title", hidden: false },
   { label: "내용1", type: "content_content1", hidden: false },
