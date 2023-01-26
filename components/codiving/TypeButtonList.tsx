@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import {
   Blog,
   ClassNames,

@@ -1,23 +1,24 @@
 import styled from "@emotion/styled";
 import { InputHTMLAttributes } from "react";
-import { TypeLabel, TypeList } from "types/common";
+import { Label, ClassNames } from "types/common";
 import Br from "./Br";
 
 const Container = styled("div")(() => ({
   fontSize: 4,
   border: "1px solid lightgray",
   display: "flex",
-  alignItems: "center"
+  alignItems: "center",
+  justifyContent: "space-between"
 }));
 
 const InputField = styled("input")(() => ({
-  width: "90%",
+  flex: 1,
   height: 24
 }));
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: TypeList;
-  label: TypeLabel;
+  type: ClassNames;
+  label: Label;
   onDelete: () => () => void;
 }
 
@@ -29,10 +30,12 @@ const Input = (props: InputProps) => {
   return (
     <Container>
       <label>{label}</label>
-      <InputField {...rest} />
-      <button tabIndex={-1} onClick={onDelete()}>
-        D
-      </button>
+      <div style={{ flex: 1, display: "flex" }}>
+        <InputField {...rest} />
+        <button tabIndex={-1} onClick={onDelete()}>
+          D
+        </button>
+      </div>
     </Container>
   );
 };

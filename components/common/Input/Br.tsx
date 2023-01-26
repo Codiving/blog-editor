@@ -5,7 +5,8 @@ const Container = styled("div")(() => ({
   fontSize: 4,
   border: "1px solid lightgray",
   display: "flex",
-  alignItems: "center"
+  alignItems: "center",
+  justifyContent: "space-between"
 }));
 
 type Props = Pick<InputProps, "onDelete">;
