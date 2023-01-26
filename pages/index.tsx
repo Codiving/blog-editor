@@ -1,9 +1,19 @@
 import { TypeButtonList as CodivingTypeButtonList } from "components/codiving";
-import { BlogButton, Input, InputContainer } from "components/common";
+import {
+  BlogButton,
+  HtmlViewer,
+  Input,
+  InputContainer
+} from "components/common";
+import produce from "immer";
 import { useCallback, useState } from "react";
-import { CODIVING_TYPE_LIST } from "types/codiving";
-import { Blog, INIT_VALUE, List, TypeList } from "types/common";
-import { PERSONAL_TYPE_LIST } from "types/personal";
+import {
+  Blog,
+  ClassNames,
+  INIT_VALUE,
+  List,
+  TOTAL_BUTTON_LIST
+} from "types/common";
 
 const Home = () => {
   const [blog, setBlog] = useState<Blog>("codiving");
@@ -13,27 +23,24 @@ const Home = () => {
 
   const onChangeBlog = useCallback((blog: Blog) => {
     setBlog(blog);
+    setList([]);
+    setCurIndex(0);
+    setHtmlString("");
   }, []);
 
-  const onAddList = useCallback(
-    (type: TypeList) => {
-      const item =
-        blog === "codiving"
-          ? CODIVING_TYPE_LIST.find(el => el.type === type)
-          : PERSONAL_TYPE_LIST.find(el => el.type === type);
+  const onAddList = (type: ClassNames) => {
+    const item = TOTAL_BUTTON_LIST.find(el => el.type === type);
+    if (!item) return;
 
-      if (!item) return;
+    const newIndex = curIndex + 1;
+    const newItem = { ...INIT_VALUE, type, label: item.label };
 
-      const newIndex = curIndex + 1;
-      const newItem = { ...INIT_VALUE, type, label: item.label };
+    const beforeList = list.slice(0, newIndex);
+    const afterList = list.slice(newIndex);
 
-      const beforeList = list.slice(0, newIndex);
-      const afterList = list.slice(newIndex);
-
-      setList([...beforeList, newItem, ...afterList]);
-    },
-    [blog, curIndex, list]
-  );
+    setList([...beforeList, newItem, ...afterList]);
+    setCurIndex(prev => prev + 1);
+  };
 
   // TODO: 추후 리팩토링 하기
   const onDelete = useCallback(
@@ -51,13 +58,22 @@ const Home = () => {
           onChange: onChangeBlog
         }}
       />
-      <CodivingTypeButtonList {...{ onAddList }} />
+      <CodivingTypeButtonList {...{ blog, onAddList }} />
       <InputContainer>
         {list.map(({ type, value, label }, index) => {
           const id = String(index);
           return (
             <Input
               key={index}
+              onChange={e => {
+                const newValue = e.target.value;
+
+                const newList = produce(list, draft => {
+                  draft[index].value = newValue;
+                });
+
+                setList(newList);
+              }}
               {...{
                 id,
                 type,
@@ -70,6 +86,7 @@ const Home = () => {
           );
         })}
       </InputContainer>
+      <HtmlViewer htmlString={htmlString} />
     </div>
   );
 };

@@ -1,30 +1,32 @@
 import styled from "@emotion/styled";
-import { useCallback } from "react";
-import { CODIVING_TYPE_LIST } from "types/codiving";
-import { TypeList } from "types/common";
+import { useCallback, useMemo } from "react";
+import {
+  Blog,
+  ClassNames,
+  CODIVING_BUTTON_LIST,
+  PERSONAL_BUTTON_LIST
+} from "types/common";
 
 const Container = styled("div")(() => ({}));
 
 interface Props {
-  onAddList: (type: TypeList) => void;
+  blog: Blog;
+  onAddList: (type: ClassNames) => void;
 }
 
 const TypeButtonList = (props: Props) => {
-  const { onAddList: _onAddList } = props;
+  const { blog, onAddList } = props;
 
-  const onAddList = useCallback(
-    (type: TypeList) => () => {
-      _onAddList(type);
-    },
-    [_onAddList]
-  );
+  const list = useMemo(() => {
+    return blog === "codiving" ? CODIVING_BUTTON_LIST : PERSONAL_BUTTON_LIST;
+  }, [blog]);
 
   return (
     <Container>
-      {CODIVING_TYPE_LIST.map(({ type, label, hidden }) => {
+      {list.map(({ type, label, hidden }) => {
         if (hidden) return null;
         return (
-          <button key={label} onClick={onAddList(type)}>
+          <button key={label} onClick={() => onAddList(type)}>
             {label}
           </button>
         );
