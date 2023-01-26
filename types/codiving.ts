@@ -42,8 +42,26 @@ export const CODIVING_TYPE = [
 
 export type CodivingType = typeof CODIVING_TYPE[number];
 
+export const CODIVING_LABEL = [
+  "제목",
+  "소제목",
+  "문단제목",
+  "내용1",
+  "줄바꿈",
+  "볼드",
+  "볼드라인",
+  "이미지",
+  "초록색링크",
+  "노란색링크",
+  "빨간색링크",
+  "출처",
+  ""
+] as const;
+
+export type CodivingLabel = typeof CODIVING_LABEL[number];
+
 type CodivingTypeList = {
-  label: string;
+  label: CodivingLabel;
   type: CodivingType;
   hidden: boolean;
 };
