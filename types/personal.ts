@@ -21,7 +21,7 @@ export const PERSONAL_CLASS_NAMES = [
 ] as const;
 export type PersonalClassNames = typeof PERSONAL_CLASS_NAMES[number];
 
-const PERSONAL_TYPE = [
+export const PERSONAL_TYPE = [
   "title",
   "sub_title",
   "content_content1",
@@ -34,4 +34,25 @@ const PERSONAL_TYPE = [
   "r_mark",
   ""
 ] as const;
+
 export type PersonalType = typeof PERSONAL_TYPE[number];
+
+type PersonalTypeList = {
+  label: string;
+  type: PersonalType;
+  hidden: boolean;
+};
+
+export const CODIVING_TYPE_LIST: PersonalTypeList[] = [
+  { label: "제목", type: "title", hidden: false },
+  { label: "소제목", type: "sub_title", hidden: false },
+  { label: "내용1", type: "content_content1", hidden: false },
+  { label: "줄바꿈", type: "br", hidden: false },
+  { label: "볼드", type: "bold", hidden: true },
+  { label: "볼드라인", type: "bold_line", hidden: true },
+  { label: "이미지", type: "image", hidden: false },
+  { label: "초록색링크", type: "my_link", hidden: true },
+  { label: "노란색링크", type: "y_mark", hidden: true },
+  { label: "빨간색링크", type: "r_mark", hidden: true },
+  { label: "", type: "", hidden: true }
+];

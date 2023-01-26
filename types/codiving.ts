@@ -24,11 +24,11 @@ export const CODIVING_CLASS_NAMES = [
 ] as const;
 export type CodivingClassNames = typeof CODIVING_CLASS_NAMES[number];
 
-const CODIVING_TYPE = [
+export const CODIVING_TYPE = [
   "title",
   "sub_title",
-  "content_content1",
   "mini_title",
+  "content_content1",
   "br",
   "bold",
   "bold_line",
@@ -39,6 +39,29 @@ const CODIVING_TYPE = [
   "reference",
   ""
 ] as const;
+
 export type CodivingType = typeof CODIVING_TYPE[number];
+
+type CodivingTypeList = {
+  label: string;
+  type: CodivingType;
+  hidden: boolean;
+};
+
+export const CODIVING_TYPE_LIST: CodivingTypeList[] = [
+  { label: "제목", type: "title", hidden: false },
+  { label: "소제목", type: "sub_title", hidden: false },
+  { label: "문단제목", type: "mini_title", hidden: false },
+  { label: "내용1", type: "content_content1", hidden: false },
+  { label: "줄바꿈", type: "br", hidden: false },
+  { label: "볼드", type: "bold", hidden: true },
+  { label: "볼드라인", type: "bold_line", hidden: true },
+  { label: "이미지", type: "image", hidden: false },
+  { label: "초록색링크", type: "my_link", hidden: true },
+  { label: "노란색링크", type: "y_mark", hidden: true },
+  { label: "빨간색링크", type: "r_mark", hidden: true },
+  { label: "출처", type: "reference", hidden: true },
+  { label: "", type: "", hidden: true }
+];
 
 export const CODIVING_MINI_TITLE_PREFIX = "◆";
