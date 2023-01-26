@@ -2,3 +2,143 @@
   all: unset;
   box-sizing: border-box;
 }
+
+.title {
+  display: block;
+  padding: 0 10px;
+  font-size: 28px;
+  font-weight: 600;
+  border-left: 4px solid red;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+
+.title_description {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.sub_title {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 40px 0 15px;
+  border-left: 4px solid darkred;
+  opacity: 0.8;
+}
+
+.sub_title_content {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.last_title {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px 0 20px;
+  border-left: 4px solid black;
+  opacity: 0.8;
+}
+
+.content_title1 {
+  display: block;
+  font-size: 20px;
+  margin: 20px 0 10px;
+  padding-left: 10px;
+  border-left: 3px solid indianred;
+}
+
+.content_content1 {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 11px !important;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.content_content2 {
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.mini_title {
+  display: block;
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.ul {
+  display: block;
+  margin: 15px 0;
+  list-style-type: circle;
+  font-size: 16px;
+}
+
+.ul li {
+  display: block;
+  margin: 7px;
+  font-weight: 200;
+}
+
+.my_link {
+  background: green;
+  padding: 1px 4px;
+  color: white;
+}
+
+.y_mark {
+  font-weight: 600;
+  background: yellow;
+}
+
+.r_mark {
+  font-weight: 600;
+  color: red;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+.bold_line {
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.image {
+  display: block;
+  margin: 10px 0;
+}
+
+.warn_title {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px 0 20px;
+  border-left: 4px solid red;
+  opacity: 0.8;
+}
+
+.err_msg {
+  font-size: 16px;
+  margin-bottom: 5px !important;
+  display: block;
+}
+
+.gist {
+  margin-top: 20px;
+}
+
+.map {
+  margin: 0;
+}
