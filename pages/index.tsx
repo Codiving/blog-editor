@@ -6,7 +6,8 @@ import {
   InputContainer
 } from "components/common";
 import produce from "immer";
-import { useCallback, useState } from "react";
+import { html } from "js-to-html";
+import { useCallback, useEffect, useState } from "react";
 import {
   Blog,
   ClassNames,
@@ -49,6 +50,36 @@ const Home = () => {
     },
     []
   );
+
+  useEffect(() => {
+    const result: any = list.map(item => {
+      if (item.type === "br") return html.br();
+
+      const defaultClassName: ClassNames[] = [item.type];
+      const classNames: ClassNames[] = [...defaultClassName];
+
+      let text = item.value;
+
+      item.bold.forEach(bold => {
+        text = text.replaceAll(bold, `|${bold}|`);
+      });
+      if (item.bold.length) {
+        return html.p(
+          {
+            class: classNames.join(" ")
+          },
+          text.split("|").map(el => {
+            if (item.bold.includes(el)) return html.span({ class: "bold" }, el);
+            return el;
+          })
+        );
+      }
+
+      return html.p({ class: classNames.join(" ") }, item.value);
+    });
+
+    setHtmlString(html.div({}, result).toHtmlText({ pretty: true }));
+  }, [list]);
 
   return (
     <div>
