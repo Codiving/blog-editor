@@ -164,6 +164,27 @@ const Home = () => {
                     onMoveNextInput(index);
                   }
                 }
+                // 현재 줄 삭제 : crtl + Backspace
+                else if ((e.metaKey || e.ctrlKey) && e.code === "Backspace") {
+                  onDelete(index)();
+                }
+                // 볼드 처리
+                else if ((e.metaKey || e.ctrlKey) && e.code === "KeyB") {
+                  const selected = window.getSelection();
+                  if (!selected) return;
+
+                  const boldText = selected.toString();
+                  console.log("# boldText : ", boldText);
+
+                  if (!boldText.length) return;
+                  const newList = produce(list, draft => {
+                    draft[index].bold = Array.from(
+                      new Set([...draft[index].bold, boldText])
+                    );
+                  });
+
+                  setList(newList);
+                }
               }}
               {...{
                 id,
