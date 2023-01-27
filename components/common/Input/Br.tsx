@@ -9,16 +9,16 @@ const Container = styled("div")(() => ({
   justifyContent: "space-between"
 }));
 
-type Props = Pick<InputProps, "onDelete">;
+type Props = Omit<InputProps, "type" | "label">;
 
 const Br = (props: Props) => {
-  const { onDelete } = props;
+  const { onDelete, ...rest } = props;
 
   return (
     <Container>
       <div>
         <label>줄바꿈</label>
-        <input style={{ height: 1, width: 1 }} />
+        <input className="input" {...rest} style={{ height: 1, width: 1 }} />
       </div>
       <button tabIndex={-1} onClick={onDelete()}>
         D

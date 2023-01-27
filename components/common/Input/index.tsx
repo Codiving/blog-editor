@@ -25,13 +25,13 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input = (props: InputProps) => {
   const { type, label, onDelete, ...rest } = props;
 
-  if (type === "br") return <Br onDelete={onDelete} />;
+  if (type === "br") return <Br onDelete={onDelete} {...rest} />;
 
   return (
     <Container>
       <label>{label}</label>
       <div style={{ flex: 1, display: "flex" }}>
-        <InputField {...rest} />
+        <InputField className="input" {...rest} />
         <button tabIndex={-1} onClick={onDelete()}>
           D
         </button>
