@@ -66,6 +66,19 @@ const Home = () => {
     setList(newList);
   };
 
+  // 다음 칸으로 이동 : Enter
+  const onMoveNextInput = (index: number) => {
+    let nextIndex = index;
+    do {
+      nextIndex += 1;
+      const nextInput = document.getElementById(String(nextIndex));
+      if (nextInput && nextInput.className.includes("input")) {
+        nextInput.focus();
+        break;
+      }
+    } while (nextIndex <= list.length);
+  };
+
   useEffect(() => {
     const result: any = list.map(item => {
       if (item.type === "br") return html.br();
@@ -126,6 +139,10 @@ const Home = () => {
                   // 줄바꿈 추가
                   if ((e.metaKey || e.ctrlKey) && e.shiftKey) {
                     onAddBr(index);
+                  }
+                  // 다음 칸으로 이동
+                  else if (!e.nativeEvent.isComposing) {
+                    onMoveNextInput(index);
                   }
                 }
               }}
