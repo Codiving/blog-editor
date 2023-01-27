@@ -79,6 +79,21 @@ const Home = () => {
     } while (nextIndex <= list.length);
   };
 
+  // 내용 추가 : crtl + Enter
+  const onAddContent = (index: number) => {
+    const before = list.slice(0, index + 1);
+    const after = list.slice(index + 1);
+
+    const newItem: List = {
+      ...INIT_VALUE,
+      type: "content_content1",
+      label: "내용1"
+    };
+    const newList = [...before, newItem, ...after];
+
+    setList(newList);
+  };
+
   useEffect(() => {
     const result: any = list.map(item => {
       if (item.type === "br") return html.br();
@@ -139,6 +154,10 @@ const Home = () => {
                   // 줄바꿈 추가
                   if ((e.metaKey || e.ctrlKey) && e.shiftKey) {
                     onAddBr(index);
+                  }
+                  // 내용 추가
+                  else if (e.metaKey || e.ctrlKey) {
+                    onAddContent(index);
                   }
                   // 다음 칸으로 이동
                   else if (!e.nativeEvent.isComposing) {

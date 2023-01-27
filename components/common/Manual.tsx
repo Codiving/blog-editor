@@ -20,6 +20,7 @@ const Manual = () => {
       <Title># 단축기</Title>
       <Content>- 줄바꿈 추가 : crtl + shift + Enter</Content>
       <Content>- 다음 칸 이동 추가 : Enter</Content>
+      <Content>- 다음 칸 이동 추가 : crtl + Enter</Content>
     </Container>
   );
 };
