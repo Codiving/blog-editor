@@ -5,6 +5,7 @@ import {
   Input,
   InputContainer
 } from "components/common";
+import Manual from "components/common/Manual";
 import produce from "immer";
 import { html } from "js-to-html";
 import { useCallback, useEffect, useState } from "react";
@@ -51,6 +52,20 @@ const Home = () => {
     []
   );
 
+  // 줄바꿈 추가 : crtl + shift + Enter
+  const onAddBr = (index: number) => {
+    const before = list.slice(0, index + 1);
+    const after = list.slice(index + 1);
+
+    const newItem: List = {
+      ...INIT_VALUE,
+      type: "br"
+    };
+    const newList = [...before, newItem, ...after];
+
+    setList(newList);
+  };
+
   useEffect(() => {
     const result: any = list.map(item => {
       if (item.type === "br") return html.br();
@@ -83,6 +98,7 @@ const Home = () => {
 
   return (
     <div>
+      <Manual />
       <BlogButton
         {...{
           value: blog,
@@ -104,6 +120,14 @@ const Home = () => {
                 });
 
                 setList(newList);
+              }}
+              onKeyDown={e => {
+                if (e.key === "Enter") {
+                  // 줄바꿈 추가
+                  if ((e.metaKey || e.ctrlKey) && e.shiftKey) {
+                    onAddBr(index);
+                  }
+                }
               }}
               {...{
                 id,

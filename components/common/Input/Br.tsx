@@ -16,7 +16,10 @@ const Br = (props: Props) => {
 
   return (
     <Container>
-      <label>줄바꿈</label>
+      <div>
+        <label>줄바꿈</label>
+        <input style={{ height: 1, width: 1 }} />
+      </div>
       <button tabIndex={-1} onClick={onDelete()}>
         D
       </button>
