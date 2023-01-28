@@ -21,6 +21,8 @@ const Manual = () => {
       <Content>- 줄바꿈 추가 : crtl + shift + Enter</Content>
       <Content>- 다음 칸 이동 추가 : Enter</Content>
       <Content>- 다음 칸 이동 추가 : crtl + Enter</Content>
+      <Content>- 현재 줄 삭제 : crtl + Backspace</Content>
+      <Content>- 볼드 처리 : crtl + B</Content>
     </Container>
   );
 };
