@@ -16,13 +16,19 @@ const Button = styled("button")<{ value: Blog; current: Blog }>(
   })
 );
 
+const Flex = styled("div")(() => ({
+  display: "flex",
+  gap: 10
+}));
+
 interface Props {
   value: Blog;
   onChange: (value: Blog) => void;
+  onCopy: () => void;
 }
 
 const BlogButton = (props: Props) => {
-  const { value, onChange } = props;
+  const { value, onChange, onCopy } = props;
 
   const onClickCodiving = useCallback(() => {
     onChange("codiving");
@@ -35,12 +41,17 @@ const BlogButton = (props: Props) => {
   return (
     <Container>
       <Title># 블로그 선택</Title>
-      <Button value={value} current="codiving" onClick={onClickCodiving}>
-        Codiving
-      </Button>
-      <Button value={value} current="personal" onClick={onClickPersonal}>
-        Personal
-      </Button>
+      <Flex>
+        <div>
+          <Button value={value} current="codiving" onClick={onClickCodiving}>
+            Codiving
+          </Button>
+          <Button value={value} current="personal" onClick={onClickPersonal}>
+            Personal
+          </Button>
+        </div>
+        <button onClick={onCopy}>Copy</button>
+      </Flex>
     </Container>
   );
 };

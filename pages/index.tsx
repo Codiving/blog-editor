@@ -17,6 +17,28 @@ import {
   TOTAL_BUTTON_LIST
 } from "types/common";
 
+const copyToClipboard = (htmlString: string) => {
+  if (navigator.clipboard) {
+    navigator.clipboard
+      .writeText(htmlString)
+      .then(() => console.log("복사 완료"));
+  } else {
+    if (!document.queryCommandSupported("copy")) return;
+
+    const textarea = document.createElement("textarea");
+    textarea.value = htmlString;
+    textarea.style.top = "0px";
+    textarea.style.left = "0px";
+    textarea.style.position = "fixed";
+
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
+};
+
 const Home = () => {
   const [blog, setBlog] = useState<Blog>("codiving");
   const [list, setList] = useState<List[]>([]);
@@ -94,8 +116,8 @@ const Home = () => {
     setList(newList);
   };
 
-  useEffect(() => {
-    const result: any = list.map(item => {
+  const generateJsToHtml = useCallback(() => {
+    const result = list.map(item => {
       if (item.type === "br") return html.br();
 
       const defaultClassName: ClassNames[] = [item.type];
@@ -121,8 +143,13 @@ const Home = () => {
       return html.p({ class: classNames.join(" ") }, item.value);
     });
 
-    setHtmlString(html.div({}, result).toHtmlText({ pretty: true }));
+    return html.div({}, result).toHtmlText({ pretty: true });
   }, [list]);
+
+  useEffect(() => {
+    const htmlString = generateJsToHtml();
+    setHtmlString(htmlString);
+  }, [generateJsToHtml, list]);
 
   return (
     <div>
@@ -130,7 +157,11 @@ const Home = () => {
       <BlogButton
         {...{
           value: blog,
-          onChange: onChangeBlog
+          onChange: onChangeBlog,
+          onCopy: () => {
+            const htmlString = generateJsToHtml();
+            copyToClipboard(htmlString);
+          }
         }}
       />
       <CodivingTypeButtonList {...{ blog, onAddList }} />
