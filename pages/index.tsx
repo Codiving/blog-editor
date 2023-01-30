@@ -154,6 +154,36 @@ const Home = () => {
     setList(newList);
   };
 
+  // 내용 추가 : crtl + M
+  const onAddMinitTitle = (index: number) => {
+    const before = list.slice(0, index + 1);
+    const after = list.slice(index + 1);
+
+    const newItem: List = {
+      ...INIT_VALUE,
+      type: "mini_title",
+      label: "문단제목"
+    };
+    const newList = [...before, newItem, ...after];
+
+    setList(newList);
+  };
+
+  // 내용 추가 : crtl + M
+  const onAddSubTitle = (index: number) => {
+    const before = list.slice(0, index + 1);
+    const after = list.slice(index + 1);
+
+    const newItem: List = {
+      ...INIT_VALUE,
+      type: "sub_title",
+      label: "소제목"
+    };
+    const newList = [...before, newItem, ...after];
+
+    setList(newList);
+  };
+
   const generateJsToHtml = useCallback(() => {
     const result = list.map(item => {
       if (item.type === "br") return html.br();
@@ -322,6 +352,20 @@ const Home = () => {
                               });
 
                               setList(newList);
+                            }
+                            // 문단 제목 추가
+                            else if (
+                              (e.metaKey || e.ctrlKey) &&
+                              e.code === "KeyK"
+                            ) {
+                              onAddMinitTitle(index);
+                            }
+                            // 소제목 추가
+                            else if (
+                              (e.metaKey || e.ctrlKey) &&
+                              e.code === "KeyJ"
+                            ) {
+                              onAddSubTitle(index);
                             }
                           }}
                           {...{

@@ -23,6 +23,8 @@ const Manual = () => {
       <Content>- 다음 칸 이동 추가 : crtl + Enter</Content>
       <Content>- 현재 줄 삭제 : crtl + Backspace</Content>
       <Content>- 볼드 처리 : crtl + B</Content>
+      <Content>- 소제목 추가 : crtl + J</Content>
+      <Content>- 문단제목 추가 : crtl + K</Content>
     </Container>
   );
 };
