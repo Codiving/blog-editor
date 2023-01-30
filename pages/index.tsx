@@ -66,7 +66,17 @@ const copyToClipboard = (htmlString: string) => {
 
 const Home = () => {
   const [blog, setBlog] = useState<Blog>("codiving");
-  const [list, setList] = useState<List[]>([]);
+  const [list, setList] = useState<List[]>([
+    {
+      type: "title",
+      label: "제목",
+      value: "",
+      bold: [],
+      red: [],
+      yellow: [],
+      green: []
+    }
+  ]);
   const [curIndex, setCurIndex] = useState(0);
   const [htmlString, setHtmlString] = useState("");
   const [placeholderProps, setPlaceholderProps] = useState(
