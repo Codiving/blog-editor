@@ -10,7 +10,8 @@ import {
   BlogButton,
   HtmlViewer,
   Input,
-  InputContainer
+  InputContainer,
+  StickyHeader
 } from "components/common";
 import Manual from "components/common/Manual";
 import produce from "immer";
@@ -229,7 +230,6 @@ const Home = () => {
 
   return (
     <div>
-      <Manual />
       <BlogButton
         {...{
           value: blog,
@@ -240,7 +240,10 @@ const Home = () => {
           }
         }}
       />
-      <CodivingTypeButtonList {...{ blog, onAddList }} />
+      <StickyHeader>
+        <Manual />
+        <CodivingTypeButtonList {...{ blog, onAddList }} />
+      </StickyHeader>
       <DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
